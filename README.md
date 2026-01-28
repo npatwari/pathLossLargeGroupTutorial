@@ -91,7 +91,7 @@ On the Parameterize screen, put into the "Node name of existing Shout orchestrat
 
 Wait until the List View shows your node's status is "ready".
 
-#### Edit the Experiment Parameters JSON File
+### Edit the Experiment Parameters JSON File
 (Team member #2) 
 
 Either (a) open a X11 VNC window on your list view by using the pull down menu at the far right of the iface-node row; or (b) open a terminal window  ssh to your iface-node. 
@@ -145,7 +145,7 @@ nano ./3.run_cmd.sh
 Change the line that says `CMD="save_iq_w_tx_gold"` to instead say `CMD="save_iq_w_tx_cw"`.
 Save the file (`^O`), overwrite the same file by hitting Enter, and close the editor (`^X`).
  -->
-#### Execute the Shout measurement command
+### Execute the Shout measurement command
 (Team member #3)
 
 Two groups _can not_ run the Shout measurement command simultaneously.  [This spreadsheet](https://docs.google.com/spreadsheets/d/1fkBx37X2jsYdEbfvXn1atdOlv2okUsPXtIUUur662mg/edit?usp=sharing) will serve as a kind of multiple access control for us. Go to the [sheet](https://docs.google.com/spreadsheets/d/1fkBx37X2jsYdEbfvXn1atdOlv2okUsPXtIUUur662mg/edit?usp=sharing), and see if there is another group currently running a Shout measurement command on your node set (either "rooftop nodes" or "dense deployment nodes"). If so, wait. If not, write your group number in the appropriate box (top white box for groups 1,2, or 3; bottom white box for groups 4,5, or 6).
@@ -171,7 +171,7 @@ where, again, change username, and change pcWWW to the iface-node name; and chan
 
 Zip this local directory and share it with everyone on the team.
 
-## Analyze the Data
+### Analyze the Data
 (All team members individually)
 
 In this step, you will load and run a Jupyter notebook. The file, `CheckShoutData.ipynb` is in this repo. It is also a [public Google Colab notebook](https://colab.research.google.com/drive/1g0DbZOUlDLly6y1m5UzvOpGiR9h4DKFC?usp=sharing) if you prefer to run the notebook on the cloud.
