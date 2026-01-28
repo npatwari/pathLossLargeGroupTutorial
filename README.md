@@ -14,7 +14,7 @@ Refer to this table when instructed to do so in the steps below.  Be sure to loo
 
 | Group # | Node Type | Nodes | Frequency Min | Frequency Max | Center Frequency | TX/RX Gains |
 |---------|----|--------------|--------|-------|------|---------|
-| 1,2,3 | Rooftop | `cbrssdr1-bes`, `cbrssdr1-browning`, `cbrssdr1-fm`, `cbrssdr1-honors`, `cbrssdr1-hospital` | 3391 | 3395 | 3393 | TX: 27, RX:30 |
+| 1,2,3 | Rooftop | `cbrssdr1-bes`, `cbrssdr1-browning`,  `cbrssdr1-honors`, `cbrssdr1-hospital`, `cbrssdr1-ustar` | 3391 | 3395 | 3393 | TX: 27, RX:30 |
 | 4,5,6 |  Dense Deployment | `cnode-ebc`, `cnode-guesthouse`, `cnode-mario`, `cnode-moran`, `cnode-ustar` | 3396 | 3400 | 3398 | TX: 80, RX: 70 |
 
 All should clone the [pathLossLargeGroupTutorial](https://github.com/npatwari/pathLossLargeGroupTutorial) git repo to their laptop.
