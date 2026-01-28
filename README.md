@@ -26,13 +26,13 @@ But if you are running these instructions on your own, you will need to do these
 
 ### Instantiate a Shout experiment
 Instantiate a `shout-long-measurement` profile experiment
-* Navigated to: https://www.powderwireless.net/
+* Navigate to: https://www.powderwireless.net/
 * Go to Experiments: Start Experiment
 * Click "Change Profile" and select "shout-long-measurement"
 * Click "Next" to get to the "Parameterize" tab.
     - Use a compute node and orchestrator node type of d430
     - Use a Dataset to connect of "None"
-    - Expand "CBAND X310 radios." and select the ones to be used. Expand the "Dense Site NUC+B210 radios to allocate." and selected the nodes to be used. Of course, you are limited to [what is available](https://www.powderwireless.net/resinfo.php).
+    - Expand "CBAND X310 radios." and select the ones to be used. Expand the "Dense Site NUC+B210 radios to allocate." and select the nodes to be used. Of course, you are limited to [what is available](https://www.powderwireless.net/resinfo.php).
     - Expand "Frequency ranges for CBAND operation." You should look at [what is available](https://www.powderwireless.net/resinfo.php). Each group only needs a 2-3 MHz because the transmission is narrowband. 
     - Click "Next"
 * On the "Finalize" step:
@@ -40,14 +40,14 @@ Instantiate a `shout-long-measurement` profile experiment
 * On the "Schedule" step, leave all fields at their defaults and click "Finish"
 * Wait for the experiment to instantiate (turn green), and the startup scripts to finish
 
-### Checked each SDR's FPGA
+### Check each SDR's FPGA
 Check each rooftop node `cbrssdr*` software-defined radio, which sometimes have an FPGA image different from the one we want for Shout, as follows.
 
-Log on to each rooftop SDR's compute node. (I find it easiest to copy and paste the following commands and edit them in a separate editor, so I can copy and paste multiple ssh commands exactly as I want them.) For each compute node connected to a rooftop / `cbrssdr1` node, I connected to it via ssh:
+Log on to each rooftop SDR's compute node. (I find it easiest to copy and paste the following commands and edit them in a separate editor, so I can copy and paste multiple ssh commands exactly as I want them.) For each compute node connected to a rooftop / `cbrssdr1` node, connect to it via ssh:
 ```
 ssh -Y -p 22 -t username@pcXXX.emulab.net 'cd /local/repository/bin && tmux new-session -A -s shout &&  exec $SHELL'
 ```
-where "username" was replaced with my username, and pcXXX is the compute **node** name.
+where "username" is your username, and pcXXX is the compute **node** name.
 
 When connected, run `uhd_usrp_probe`. 
 
@@ -73,7 +73,7 @@ In the orchestrator window, run
 ```
 ./1.start_orch.sh
 ```
-When it is done, on each compute node (attached to one of three SDRs), run
+When it is done, on each compute node (attached to one of the SDRs), run
 ```
 ./2.start_client.sh
 ```
@@ -98,7 +98,7 @@ Either (a) open a X11 VNC window on your list view by using the pull down menu a
 ```
 ssh -Y -p 22 -t username@pcWWW.emulab.net 'cd /local/repository/bin && tmux new-session -A -s shout1 &&  exec $SHELL'
 ```
-where `username` is my username, and I replaced pcWWW with the node name of the iface-node. This command starts me in the `/local/repository/bin/` directory.
+where `username` is your username, and replace pcWWW with the node name of the iface-node. This command starts me in the `/local/repository/bin/` directory.
 
 You're going to need to edit a text file on your iface-node. People have their own preference for editor. I like `vi` but I know no one else who does. I suggest the `nano` editor. So run
 ```
