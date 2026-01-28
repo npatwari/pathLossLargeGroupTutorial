@@ -1,5 +1,5 @@
 # Path Loss Measurements using the Shout Measurement Framework
-Neal Patwari, 28 Jan 2026
+Neal Patwari and Kirk Webb, 28 Jan 2026
 
 ### Learning objectives
 
