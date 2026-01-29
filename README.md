@@ -89,6 +89,8 @@ Log in to Shout and start a [run-shout-measiface](https://www.powderwireless.net
 
 On the Parameterize screen, put into the "Node name of existing Shout orchestrator" field the node name of the orchestrator in your instructor's experiment. Ask if you're not sure. You don't need to change the Advanced options, but you can expand it to show that you are requesting a d430 compute node, no dataset, and to "Start X11 VNC" on this compute node.
 
+_Note that only the person who starts the experiment will be able to run the X11 VNC_. Other team members would need to use ssh to log into the iface-node. 
+
 Wait until the List View shows your node's status is "ready".
 
 ### Edit the Experiment Parameters JSON File
