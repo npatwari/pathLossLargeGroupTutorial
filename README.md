@@ -96,11 +96,16 @@ Wait until the List View shows your node's status is "ready".
 ### Edit the Experiment Parameters JSON File
 (Team member #2) 
 
-Either (a) open a X11 VNC window on your list view by using the pull down menu at the far right of the iface-node row; or (b) open a terminal window  ssh to your iface-node. 
+Either (a) open a X11 VNC window on your list view by using the pull down menu at the far right of the iface-node row; or (b) open a terminal window  ssh to your iface-node. If doing ssh, use:
 ```
 ssh -Y -p 22 -t username@pcWWW.emulab.net 'cd /local/repository/bin && tmux new-session -A -s shout1 &&  exec $SHELL'
 ```
-where `username` is your username, and replace pcWWW with the node name of the iface-node. This command starts me in the `/local/repository/bin/` directory.
+where `username` is your username, and replace pcWWW with the node name of the iface-node. This command starts you in the `/local/repository/bin/` directory.
+
+If you did the X11 VNC, do a 
+```
+cd /local/repository/bin
+```
 
 You're going to need to edit a text file on your iface-node. People have their own preference for editor. I like `vi` but I know no one else who does. I suggest the `nano` editor. So run
 ```
