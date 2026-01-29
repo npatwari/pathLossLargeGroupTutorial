@@ -128,7 +128,7 @@ You're going to edit the entries of the JSON file parameter structure to have th
 | "rxrate" | 500e3 | Sampling rate at the receiver |
 | "rxgain" | `{"fixed": YY.0}`| where `YY` is your gain for your SDR receiver, either 30 or 70, depending on your group (and thus what type of SDR you're using).|  
 | "rxrepeat" | 2 | How many repetitions will be done of each link measurement |
-| "rxwait" | `{"min": 50, "max": 2000, "res": "ms"}` | ?? |
+| "rxwait" | `{"min": 50, "max": 2000, "res": "ms"}` | The time to wait between successive RX operations (when using "rxrepeat") |
 | "txclients" | A list of the compute node IDs (in the ID column of List View) | The IDs are the names ending in "-comp" for Groups 1, 2 or 3, or ending in "-dd-b210" for Group 4,5 or 6. For example: `["cbrssdr1-honors-comp", "cbrssdr1-hospital-comp", "cbrssdr1-ustar-comp"]`|
 | "rxclients"| The exact same list as for txclients| same as above
 
@@ -172,11 +172,13 @@ While still on the iface-node terminal window, do a `ls /local/data/` to see you
 
 Back _on a terminal window on your local laptop_, run
 ```
-scp -r username@pcWWW.emulab.net:/local/data/<Data dir> <local directory to save it in>
+scp -r username@pcIface.emulab.net:/local/data/<Data dir> <local directory to save it in>
 ```
-where, again, change username, and change pcWWW to the iface-node name; and change `<Data dir>` to the directory you saw when running the `ls /local/data/` command, and `<local git directory for pathLossTutorial>` to the folder on your local laptop where you're running the pathLossTutorial.
+where, again, change username, and change pcIface to the iface-node name; and change `<Data dir>` to the directory you saw when running the `ls /local/data/` command, and `<local git directory for pathLossTutorial>` to the folder on your local laptop where you're running the pathLossTutorial.
 
 Zip this local directory and share it with everyone on the team.
+
+Did you remember to delete your number from the [spreadsheet](https://docs.google.com/spreadsheets/d/1fkBx37X2jsYdEbfvXn1atdOlv2okUsPXtIUUur662mg/edit?usp=sharing) so that some other group can use the SDRs?
 
 ### Analyze the Data
 (All team members individually)
