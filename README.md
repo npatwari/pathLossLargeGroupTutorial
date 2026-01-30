@@ -22,7 +22,10 @@ All should clone the [pathLossLargeGroupTutorial](https://github.com/npatwari/pa
 ## Instructor pre-class setup
 **If you are using these instructions as part of an in-class tutorial, your instructor will have completed the steps in this section.** 
 
-But if you are running these instructions on your own, you will need to do these steps yourself. 
+But if you are running these instructions on your own, you will need to do these steps yourself. Some notes for doing these steps on your own:
+1. You probably won't be able to use 5 SDRs at a time unless you reserve nodes well ahead of time. But no worries, you can run this with as few as 2 SDRs. The number of measurements you will make is N(N-1) where N is the number of SDRs you have, so there is a quadratic advantage to more SDRs in terms of measurements. For purposes of learning how, any number of nodes N>=2 is good.
+2. You cannot mix and match SDRS of different types at this time. They have different tx and rx gain ranges, and Shout allows us to set only one value for all SDRs. So choose N rooftop nodes or N dense deployment nodes, not some of each.
+3. When parameterizing your experiment, be aware that node name "Behavioral" is the same as "bes".
 
 ### Instantiate a Shout experiment
 Instantiate a `shout-long-measurement` profile experiment
