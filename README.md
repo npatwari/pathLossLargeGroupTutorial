@@ -19,7 +19,7 @@ Refer to this table when instructed to do so in the steps below.  Be sure to loo
 
 All should clone the [pathLossLargeGroupTutorial](https://github.com/npatwari/pathLossLargeGroupTutorial) git repo to their laptop.
 
-## Instructor pre-class setup
+## 0. Instructor pre-class setup
 **If you are using these instructions as part of an in-class tutorial, your instructor will have completed the steps in this section.** 
 
 But if you are running these instructions on your own, you will need to do these steps yourself. Some notes for doing these steps on your own:
@@ -27,7 +27,7 @@ But if you are running these instructions on your own, you will need to do these
 2. You cannot mix and match SDRS of different types at this time. They have different tx and rx gain ranges, and Shout allows us to set only one value for all SDRs. So choose N rooftop nodes or N dense deployment nodes, not some of each.
 3. When parameterizing your experiment, be aware that node name "Behavioral" is the same as "bes".
 
-### Instantiate a Shout experiment
+### 0.1 Instantiate a Shout experiment
 Instantiate a `shout-long-measurement` profile experiment
 * Navigate to: https://www.powderwireless.net/
 * Go to Experiments: Start Experiment
@@ -43,7 +43,7 @@ Instantiate a `shout-long-measurement` profile experiment
 * On the "Schedule" step, leave all fields at their defaults and click "Finish"
 * Wait for the experiment to instantiate (turn green), and the startup scripts to finish
 
-### Check each SDR's FPGA
+### 0.2 Check each SDR's FPGA
 Check each rooftop node `cbrssdr*` software-defined radio, which sometimes have an FPGA image different from the one we want for Shout, as follows.
 
 Log on to each rooftop SDR's compute node. (I find it easiest to copy and paste the following commands and edit them in a separate editor, so I can copy and paste multiple ssh commands exactly as I want them.) For each compute node connected to a rooftop / `cbrssdr1` node, connect to it via ssh:
@@ -65,7 +65,7 @@ then do the following steps to flash the FPGA with the correct version of build:
 2. When that is complete, Power Cycle the x310: Find the row in the List View of your POWDER experiment page with the name of your node "-x310". Using the Settings icon in that row (all the way to the right), select "Power Cycle" and click "Confirm".
 3. After about a minute, run `uhd_find_devices` and `uhd_usrp_probe` to check that the radio is back on and now has the correct FPGA build version.
 
-### Start the Shout Framework
+### 0.3 Start the Shout Framework
 Run this command into a new terminal window to connect via ssh to the orchestrator node.
 ```
 ssh -Y -p 22 -t username@pcWWW.emulab.net 'cd /local/repository/bin && tmux new-session -A -s shout1 &&  exec $SHELL'
@@ -82,10 +82,10 @@ When it is done, on each compute node (attached to one of the SDRs), run
 ```
 Now Shout is started and ready to "run" the measurement procedure.
 
-## What Your Group Will Do
+## 1. What Your Group Will Do
 This section is completed by each group completing the tutorial. Split up the work as you wish among group members – suggestions for "(Team member X)" remind groups to split up the work.
 
-### Instantiate a shout-iface-node Experiment
+### 1.1 Instantiate a shout-iface-node Experiment
 (Team member #1) 
 
 Log in to Shout and start a [run-shout-measiface](https://www.powderwireless.net/instantiate.php?profile=1de3372e4a9f6c3ac872abc90d7f5c5636f76523) experiment. If the link doesn't work, got to Experiments: Start Experiment. Click the "Change Profile" button and search for and select "run-shout-measiface" from the "POWDER-Train-26" project. Click Next.
@@ -96,7 +96,7 @@ On the next screen, you don't need an experiment name, but you do need to specif
 
 It will take 10-15 minutes for it to create your experiment and be ready. You should read the instructions while waiting. Proceed only when the List View shows your node's status is "ready".
 
-### Edit the Experiment Parameters JSON File
+### 1.2 Edit the Experiment Parameters JSON File
 (Team member #2) 
 
 Either (a) open a X11 VNC window on your list view by using the pull down menu at the far right of the iface-node row; or (b) open a terminal window  ssh to your iface-node. If doing ssh, use:
@@ -132,7 +132,7 @@ You're going to edit the entries of the JSON file parameter structure to have th
 | "rxgain" | `{"fixed": YY.0}`| where `YY` is your gain for your SDR receiver, either 30 or 70, depending on your group (and thus what type of SDR you're using).|  
 | "rxrepeat" | 2 | How many repetitions will be done of each link measurement |
 | "rxwait" | `{"min": 50, "max": 2000, "res": "ms"}` | The time to wait between successive RX operations (when using "rxrepeat") |
-| "txclients" | A list of the compute node IDs (in the ID column of List View) | The IDs are the names ending in "-comp" for Groups 1, 2 or 3, or ending in "-dd-b210" for Group 4,5 or 6. For example: `["cbrssdr1-honors-comp", "cbrssdr1-hospital-comp", "cbrssdr1-ustar-comp"]`|
+| "txclients" | A list of the compute node IDs (in the ID column of List View) | The IDs are the names in the ID column of the List View of your instructor's experiment. They end in "-comp" for Groups 1, 2 or 3, or end in "-dd-b210" for Group 4,5 or 6. For example: `["cbrssdr1-honors-comp", "cbrssdr1-hospital-comp", "cbrssdr1-ustar-comp"]`|
 | "rxclients"| The exact same list as for txclients| same as above
 
 Save the file (`^O`), overwrite the same file by hitting Enter, and close the editor (`^X`).
@@ -155,7 +155,7 @@ nano ./3.run_cmd.sh
 Change the line that says `CMD="save_iq_w_tx_gold"` to instead say `CMD="save_iq_w_tx_cw"`.
 Save the file (`^O`), overwrite the same file by hitting Enter, and close the editor (`^X`).
  -->
-### Execute the Shout measurement command
+### 1.3 Execute the Shout measurement command
 (Team member #3)
 
 Two groups _can not_ run the Shout measurement command simultaneously.  [This spreadsheet](https://docs.google.com/spreadsheets/d/1fkBx37X2jsYdEbfvXn1atdOlv2okUsPXtIUUur662mg/edit?usp=sharing) will serve as a kind of multiple access control for us. Go to the [sheet](https://docs.google.com/spreadsheets/d/1fkBx37X2jsYdEbfvXn1atdOlv2okUsPXtIUUur662mg/edit?usp=sharing), and see if there is another group currently running a Shout measurement command on your node set (either "rooftop nodes" or "dense deployment nodes"). If so, wait. If not, write your group number in the appropriate box (top white box for groups 1,2, or 3; bottom white box for groups 4,5, or 6).
@@ -168,7 +168,7 @@ This takes about 10 minutes.
 
 When your group is done, **please remember to delete your number** from the [spreadsheet](https://docs.google.com/spreadsheets/d/1fkBx37X2jsYdEbfvXn1atdOlv2okUsPXtIUUur662mg/edit?usp=sharing) so that someone else can use it.
 
-### Copy your data back to your local laptop
+### 1.4 Copy your data back to your local laptop
 (Team member #4) 
 
 While still on the iface-node terminal window, do a `ls /local/data/` to see your data directory. Copy the directory name. If there is more than one, you probably ran the measurement multiple times, and you can pick whichever one you want.
@@ -183,7 +183,7 @@ Zip this local directory and share it with everyone on the team.
 
 Did you remember to delete your number from the [spreadsheet](https://docs.google.com/spreadsheets/d/1fkBx37X2jsYdEbfvXn1atdOlv2okUsPXtIUUur662mg/edit?usp=sharing) so that some other group can use the SDRs?
 
-### Analyze the Data
+## 2. Analyze the Data
 (All team members individually)
 
 In this step, you will load and run a Jupyter notebook. The file, `CheckShoutData.ipynb` is in this repo. It is also a [public Google Colab notebook](https://colab.research.google.com/drive/1g0DbZOUlDLly6y1m5UzvOpGiR9h4DKFC?usp=sharing) if you prefer to run the notebook on the cloud.
