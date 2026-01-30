@@ -94,7 +94,7 @@ On the Parameterize screen, put into the "Node name of existing Shout orchestrat
 
 On the next screen, you don't need an experiment name, but you do need to specify the "POWDER-Train-26" project. Click Next.
 
-Wait until the List View shows your node's status is "ready".
+It will take 10-15 minutes for it to create your experiment and be ready. You should read the instructions while waiting. Proceed only when the List View shows your node's status is "ready".
 
 ### Edit the Experiment Parameters JSON File
 (Team member #2) 
