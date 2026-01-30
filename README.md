@@ -90,9 +90,9 @@ This section is completed by each group completing the tutorial. Split up the wo
 
 Log in to Shout and start a [run-shout-measiface](https://www.powderwireless.net/instantiate.php?profile=1de3372e4a9f6c3ac872abc90d7f5c5636f76523) experiment. If the link doesn't work, got to Experiments: Start Experiment. Click the "Change Profile" button and search for and select "run-shout-measiface" from the "POWDER-Train-26" project. Click Next.
 
-On the Parameterize screen, put into the "Node name of existing Shout orchestrator" field the node name of the orchestrator in your instructor's experiment. **For class on January 30, 2026, it is `pc05-fort`.** Ask if you're not sure. You don't need to change the Advanced options, but you can expand it to show that you are requesting a d430 compute node, no dataset, and to "Start X11 VNC" on this compute node.
+On the Parameterize screen, put into the "Node name of existing Shout orchestrator" field the node name of the orchestrator in your instructor's experiment. **For class on January 30, 2026, it is `pc05-fort`.** Ask if you're not sure. You don't need to change the Advanced options, but you can expand it to show that you are requesting a d430 compute node, no dataset, and to "Start X11 VNC" on this compute node. _Note that only the person who starts the experiment will be able to run the X11 VNC_. Other team members would need to use ssh to log into the iface-node. 
 
-_Note that only the person who starts the experiment will be able to run the X11 VNC_. Other team members would need to use ssh to log into the iface-node. 
+On the next screen, you don't need an experiment name, but you do need to specify the "POWDER-Train-26" project. Click Next.
 
 Wait until the List View shows your node's status is "ready".
 
