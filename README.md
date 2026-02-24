@@ -1,5 +1,6 @@
 # Path Loss Measurements using the Shout Measurement Framework
 Neal Patwari and Kirk Webb
+
 Current version: 28 Jan 2026
 
 ### Learning objectives
